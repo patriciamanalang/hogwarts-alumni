@@ -1,0 +1,73 @@
+.nav-logo {
+  height: 12vh;
+  margin-top: 1.5rem;
+  position: relative;
+  right: 1.5rem;
+}
+
+.nav-title {
+  height: 12vh;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: white;
+  font-family: Baskervville, serif;
+  font-weight: 200;
+  margin-left: 1.3rem;
+  margin-top: 1rem;
+  width: 80%;
+}
+
+.nav {
+  background-color: rgb(119, 112, 112);
+  padding-right: 1rem;
+}
+
+.nav-icons {
+  text-align: end;
+  padding-bottom: 2px;
+}
+
+.home-icon,
+.favorites-icon {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.search {
+  background-color: rgb(217, 217, 217);
+  border: none;
+  height: 5vh;
+  margin-top: 1.5rem;
+  border-radius: 3px;
+  padding: 15px;
+}
+
+.fa-magnifying-glass {
+  color: rgb(175, 172, 172);
+  margin-top: 1.5rem;
+  position: relative;
+  right: 1.5rem;
+}
+
+.character-img {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.character-name {
+  font-family: Baskerville, sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  text-align: center;
+  margin-left: 3rem;
+  display: inline;
+}

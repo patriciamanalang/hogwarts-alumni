@@ -8,12 +8,56 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Baskervville&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
+    <div class="nav container">
+      <div class="row">
+        <div class="column-one-fifth">
+          <img class="nav-logo" src="https://1000logos.net/wp-content/uploads/2021/04/Hogwarts-Logo.png" alt="Hogwarts-Logo">
+        </div>
+        <div class="column-four-fifths nav-title">
+          <h3>Hogwarts<br>School of Witchcraft and Wizardry<br>Alumni</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-full">
+          <div class="nav-icons">
+            <iconify-icon class="home-icon" icon="game-icons:castle"></iconify-icon>
+            <iconify-icon class="favorites-icon" icon="akar-icons:heart"></iconify-icon>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="container" data-view="home-view">
+      <div class="row">
+        <div class="column-full">
+          <form>
+            <div class="search-box">
+              <input id="search" class="search" type="search" placeholder="Search for an alumni">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="characters">
+        <div class="column-half">
+          <div class="character-img">
+            <img src="images/harry.jpg">
+            <div>
+              <h3 class="character-name">Harry Potter</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+  <script src="https://kit.fontawesome.com/948b28f228.js" crossorigin="anonymous"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
