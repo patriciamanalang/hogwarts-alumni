@@ -46,4 +46,22 @@
     bottom: 0;
     left: 3rem;
   }
+
+  .center-img {
+    flex-basis: 100%;
+  }
+
+  .character-details {
+    flex-basis: 100%;
+    text-align: center;
+    line-height: 18px;
+    font-size: 10px;
+    margin-top: 9rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  .wrap {
+    flex-wrap: wrap;
+  }
 }
