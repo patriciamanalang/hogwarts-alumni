@@ -59,8 +59,6 @@ function renderCharacters(student) {
 
 var $search = document.querySelector('#search');
 
-$search.addEventListener('input', handleSearch);
-
 function handleSearch(event) {
   var $characterNodes = $characters.querySelectorAll('.column-half');
   for (var i = 0; i < $characterNodes.length; i++) {
@@ -74,3 +72,5 @@ function handleSearch(event) {
     }
   }
 }
+
+$search.addEventListener('input', handleSearch);
