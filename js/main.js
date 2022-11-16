@@ -1,7 +1,7 @@
 var $characters = document.querySelector('.characters');
 function getHarryPotterData() {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters/students');
+  xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     // console.log(xhr.status);
@@ -55,4 +55,22 @@ function renderCharacters(student) {
   $nameDiv.appendChild($h3);
   return $outerDiv;
 
+}
+
+var $search = document.querySelector('#search');
+
+$search.addEventListener('input', handleSearch);
+
+function handleSearch(event) {
+  var $characterNodes = $characters.querySelectorAll('.column-half');
+  for (var i = 0; i < $characterNodes.length; i++) {
+    if (!$characterNodes[i].textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
+      $characterNodes[i].className = 'display-none column-half';
+    }
+  }
+  if (event.target.value === '') {
+    for (var j = 0; j < $characterNodes.length; j++) {
+      $characterNodes[j].className = 'column-half';
+    }
+  }
 }
