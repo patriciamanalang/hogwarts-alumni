@@ -1,8 +1,8 @@
 .nav-logo {
   height: 12vh;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   position: relative;
-  right: 1.5rem;
+  right: 2rem;
 }
 
 .nav-title {
@@ -10,11 +10,10 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
   color: white;
   font-family: Baskervville, serif;
+  font-size: 14px;
   font-weight: 200;
-  margin-top: 1rem;
   width: 80%;
 }
 
