@@ -58,16 +58,37 @@
   right: 1.5rem;
 }
 
-.character-img {
+.characters {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo-div {
   margin-top: 1rem;
-  margin-left: 1rem;
+  text-align: center;
+  margin-left: 1px;
 }
 
 .character-name {
   font-family: Baskerville, sans-serif;
   font-weight: 300;
-  font-size: 13px;
-  text-align: center;
-  margin-left: 3rem;
+  font-size: 12px;
   display: inline;
+}
+
+.photo {
+  height: 16rem;
+  object-fit: fill;
+  width: 12rem;
+  padding: 5px;
+  margin-left: 2px;
+}
+
+.name-div {
+  text-align: center;
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 3rem;
 }

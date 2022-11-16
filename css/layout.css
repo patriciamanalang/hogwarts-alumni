@@ -22,8 +22,3 @@
 .column-half {
   width: 50%;
 }
-
-.characters {
-  display: flex;
-  flex-wrap: wrap;
-}
