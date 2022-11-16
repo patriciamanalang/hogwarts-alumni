@@ -1,0 +1,45 @@
+.container {
+  max-width: 100%;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+}
+
+.column-one-tenth {
+  width: 10%;
+}
+
+.column-full {
+  width: 100%;
+}
+
+.column-half {
+  width: 50%;
+}
+
+@media only screen and (min-width: 575px) {
+  .title {
+    font-size: 26px;
+    margin: auto;
+    margin-top: 1rem;
+  }
+
+  .nav-logo {
+    height: 20vh;
+    position: relative;
+    left: 1rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .title {
+    font-size: 17px;
+    position: relative;
+    top: 1rem;
+    right: 0;
+    bottom: 0;
+    left: 3rem;
+  }
+}

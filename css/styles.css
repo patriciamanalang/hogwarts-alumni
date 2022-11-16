@@ -1,0 +1,97 @@
+.nav-logo {
+  height: 12vh;
+  margin-top: 1rem;
+  position: relative;
+  right: 2rem;
+}
+
+.nav-title {
+  height: 12vh;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Baskervville, serif;
+  font-size: 14px;
+  font-weight: 200;
+  width: 80%;
+}
+
+.nav {
+  background-color: rgb(119, 112, 112);
+  padding-right: 1rem;
+  padding-bottom: 5px;
+}
+
+.nav-icons {
+  text-align: end;
+  padding-bottom: 2px;
+}
+
+.home-icon,
+.favorites-icon {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.search {
+  background-color: rgb(217, 217, 217);
+  border: none;
+  height: 5vh;
+  margin-top: 1.5rem;
+  border-radius: 3px;
+  padding: 15px;
+}
+
+.fa-magnifying-glass {
+  color: rgb(175, 172, 172);
+  margin-top: 1.5rem;
+  position: relative;
+  right: 1.5rem;
+}
+
+.characters {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.photo-div {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.character-name {
+  font-family: Baskerville, sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  display: inline;
+}
+
+.photo {
+  height: 16rem;
+  object-fit: fill;
+  width: 12rem;
+  padding: 5px;
+  margin-left: 2px;
+}
+
+.name-div {
+  text-align: center;
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 3rem;
+}
+
+.display-none {
+  display: none;
+}
