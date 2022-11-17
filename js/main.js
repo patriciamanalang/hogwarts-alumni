@@ -1,4 +1,5 @@
 var $characters = document.querySelector('.characters');
+
 function getHarryPotterData() {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
