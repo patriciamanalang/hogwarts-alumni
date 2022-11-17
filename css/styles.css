@@ -130,4 +130,12 @@
     sans-serif;
   font-weight: 300;
   font-size: 18px;
+  line-height: 1.5rem;
+  padding-top: 3px;
+  margin-top: 6px;
 }
+
+/* .info-photo {
+  object-fit: contain;
+
+} */
