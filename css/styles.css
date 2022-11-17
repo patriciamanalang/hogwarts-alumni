@@ -95,3 +95,9 @@
 .display-none {
   display: none;
 }
+
+.back {
+  color: rgb(145, 136, 136);
+  text-decoration: underline;
+  margin-left: 10px;
+}

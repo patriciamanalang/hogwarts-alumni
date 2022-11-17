@@ -1,4 +1,5 @@
 var $characters = document.querySelector('.characters');
+
 function getHarryPotterData() {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
@@ -44,6 +45,7 @@ function renderCharacters(student) {
   $columnHalfDiv.appendChild($photoDiv);
   var $img = document.createElement('img');
   $img.setAttribute('class', 'photo');
+  $img.setAttribute('id', student.name);
   $img.src = student.image;
   $photoDiv.appendChild($img);
   var $nameDiv = document.createElement('div');
@@ -72,5 +74,97 @@ function handleSearch(event) {
     }
   }
 }
-
+var $homeView = document.querySelector('#home-view');
+var $characterInfoView = document.querySelector('#character-info');
 $search.addEventListener('input', handleSearch);
+var $alumniInfo = document.querySelector('.alumni-info');
+
+function handleImageClick(event) {
+  data.view = 'character-info';
+  var clickedImage = event.target.getAttribute('id');
+  // console.log(clickedImage);
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    var response = xhr.response;
+    for (var i = 0; i < response.length; i++) {
+      if (clickedImage === response[i].name) {
+        $alumniInfo.appendChild(renderCharacterInfo(response[i]));
+        $homeView.className = 'container hidden';
+        $characterInfoView.className = 'container';
+      }
+    }
+  });
+  xhr.send();
+}
+$characters.addEventListener('click', handleImageClick);
+
+// <div class="row wrap alumni-info">
+//   <div class="column-half center-img">
+//     <img class="info-photo" src="images/harry.jpg">
+//     <iconify-icon class="heart-icon" icon="akar-icons:heart"></iconify-icon>
+//     <p class="character-info-name">Harry Potter</p>
+//   </div>
+//   <div class="column-half character-details">
+//     <div class="character-detail-styling">House: Gryffindor</div>
+//     <div class="character-detail-styling">Date of Birth: 07-31-1980</div>
+//     <div class="character-detail-styling">Wizard: True</div>
+//     <div class="character-detail-styling">Ancestry: Half-blood</div>
+//     <div class="character-detail-styling">Patronus: Stag</div>
+//     <div class="character-detail-styling">Eye Color: Green</div>
+//     <div class="character-detail-styling">Hair Color: Black</div>
+//   </div>
+// </div >
+
+function renderCharacterInfo(student) {
+  var $alumniInfoDiv = document.createElement('div');
+  $alumniInfoDiv.setAttribute('class', 'row wrap alumni-info');
+  var $columnHalfDiv = document.createElement('div');
+  $columnHalfDiv.setAttribute('class', 'column-half center-img');
+  $alumniInfoDiv.appendChild($columnHalfDiv);
+  var $img = document.createElement('img');
+  $img.setAttribute('class', 'info-photo');
+  $img.src = student.image;
+  $columnHalfDiv.appendChild($img);
+  var $heartIcon = document.createElement('iconify-icon');
+  $heartIcon.setAttribute('class', 'heart-icon');
+  $heartIcon.setAttribute('icon', 'akar-icons:heart');
+  $columnHalfDiv.appendChild($heartIcon);
+  var $characterName = document.createElement('p');
+  $characterName.setAttribute('class', 'character-info-name');
+  $characterName.textContent = student.name;
+  $columnHalfDiv.appendChild($characterName);
+  var $characterDetails = document.createElement('div');
+  $characterDetails.setAttribute('class', 'column-half character-details');
+  $alumniInfoDiv.appendChild($characterDetails);
+  var $house = document.createElement('div');
+  $house.setAttribute('class', 'character-detail-styling');
+  $house.textContent = 'House: ' + student.house;
+  $characterDetails.appendChild($house);
+  var $birthday = document.createElement('div');
+  $birthday.setAttribute('class', 'character-detail-styling');
+  $birthday.textContent = 'Date of Birth: ' + student.dateOfBirth;
+  $characterDetails.appendChild($birthday);
+  var $wizard = document.createElement('div');
+  $wizard.setAttribute('class', 'character-detail-styling');
+  $wizard.textContent = 'Wizard: ' + student.wizard;
+  $characterDetails.appendChild($wizard);
+  var $ancestry = document.createElement('div');
+  $ancestry.setAttribute('class', 'character-detail-styling');
+  $ancestry.textContent = 'Ancestry: ' + student.ancestry;
+  $characterDetails.appendChild($ancestry);
+  var $patronus = document.createElement('div');
+  $patronus.setAttribute('class', 'character-detail-styling');
+  $patronus.textContent = 'Patronus: ' + student.patronus;
+  $characterDetails.appendChild($patronus);
+  var $eyeColor = document.createElement('div');
+  $eyeColor.setAttribute('class', 'character-detail-styling');
+  $eyeColor.textContent = 'Eye Color: ' + student.eyeColour;
+  $characterDetails.appendChild($eyeColor);
+  var $hairColor = document.createElement('div');
+  $hairColor.setAttribute('class', 'character-detail-styling');
+  $hairColor.textContent = 'Hair Color: ' + student.hairColour;
+  $characterDetails.appendChild($hairColor);
+  return $alumniInfoDiv;
+}
