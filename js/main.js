@@ -1,4 +1,12 @@
 var $characters = document.querySelector('.characters');
+var $search = document.querySelector('#search');
+var $homeView = document.querySelector('#home-view');
+var $characterInfoView = document.querySelector('#character-info');
+var $alumniInfo = document.querySelector('.alumni-info');
+// var $backtoHomepage = document.querySelector('.back');
+var $heartIcon = document.querySelectorAll('.fa-heart');
+var $favoritesList = document.querySelector('.favorites-list');
+var $favoritesView = document.querySelector('#favorites');
 
 function getHarryPotterData() {
   var xhr = new XMLHttpRequest();
@@ -59,8 +67,6 @@ function renderCharacters(student) {
 
 }
 
-var $search = document.querySelector('#search');
-
 function handleSearch(event) {
   var $characterNodes = $characters.querySelectorAll('.column-half');
   for (var i = 0; i < $characterNodes.length; i++) {
@@ -74,10 +80,8 @@ function handleSearch(event) {
     }
   }
 }
-var $homeView = document.querySelector('#home-view');
-var $characterInfoView = document.querySelector('#character-info');
+
 $search.addEventListener('input', handleSearch);
-var $alumniInfo = document.querySelector('.alumni-info');
 
 function handleImageClick(event) {
   data.view = 'character-info';
@@ -103,7 +107,7 @@ $characters.addEventListener('click', handleImageClick);
 // <div class="row wrap alumni-info">
 //   <div class="column-half center-img">
 //     <img class="info-photo" src="images/harry.jpg">
-//     <iconify-icon class="heart-icon" icon="akar-icons:heart"></iconify-icon>
+//     <i class="fa-regular fa-heart" id="harry potter"></i>
 //     <p class="character-info-name">Harry Potter</p>
 //   </div>
 //   <div class="column-half character-details">
@@ -127,9 +131,9 @@ function renderCharacterInfo(student) {
   $img.setAttribute('class', 'info-photo');
   $img.src = student.image;
   $columnHalfDiv.appendChild($img);
-  var $heartIcon = document.createElement('iconify-icon');
-  $heartIcon.setAttribute('class', 'heart-icon');
-  $heartIcon.setAttribute('icon', 'akar-icons:heart');
+  var $heartIcon = document.createElement('i');
+  $heartIcon.setAttribute('class', 'fa-regular fa-heart');
+  $heartIcon.setAttribute('id', student.name);
   $columnHalfDiv.appendChild($heartIcon);
   var $characterName = document.createElement('p');
   $characterName.setAttribute('class', 'character-info-name');
@@ -172,31 +176,60 @@ function renderCharacterInfo(student) {
       <div class="column-half">
         <div class="favorite-photo-div">
           <img class="favorite-photo" src="images/harry.jpg">
-            <iconify-icon class="trash-icon" icon="bx:trash-alt"></iconify-icon>
-            <p class="favorite-name">Harry Potter</p>
+          <i class="fa-regular fa-trash"></i>
+          <p class="favorite-name">Harry Potter</p>
         </div>
       </div>
     </div> */
-// function renderFavoritesList(student) {
-//   var $favoritesDiv = document.createElement('div');
-//   $favoritesDiv.setAttribute('class', 'favorites-list');
-//   var $columnHalfDiv = document.createElement('div');
-//   $columnHalfDiv.setAttribute('class', 'column-half');
-//   $favoritesDiv.appendChild($columnHalfDiv);
-//   var $favePhotoDiv = document.createElement('div');
-//   $favePhotoDiv.setAttribute('class', 'favorite-photo-div');
-//   $columnHalfDiv.appendChild($favePhotoDiv);
-//   var $faveImg = document.createElement('img');
-//   $faveImg.setAttribute('class', 'favorite-photo');
-//   $faveImg.src = student.image;
-//   $favePhotoDiv.appendChild($faveImg);
-//   var $trashIcon = document.createElement('iconify-icon');
-//   $trashIcon.setAttribute('class', 'trash-icon');
-//   $trashIcon.setAttribute('icon', 'bx:trash-alt');
-//   $faveImg.appendChild($trashIcon);
-//   var $faveName = document.createElement('p');
-//   $faveName.setAttribute('class', 'favorite-name');
-//   $faveName.textContent = student.name;
-//   $faveImg.appendChild($faveName);
-//   return $favoritesDiv;
+function renderFavoritesList(student) {
+  var $favoritesDiv = document.createElement('div');
+  $favoritesDiv.setAttribute('class', 'favorites-list');
+  var $columnHalfDiv = document.createElement('div');
+  $columnHalfDiv.setAttribute('class', 'column-half');
+  $favoritesDiv.appendChild($columnHalfDiv);
+  var $favePhotoDiv = document.createElement('div');
+  $favePhotoDiv.setAttribute('class', 'favorite-photo-div');
+  $columnHalfDiv.appendChild($favePhotoDiv);
+  var $faveImg = document.createElement('img');
+  $faveImg.setAttribute('class', 'favorite-photo');
+  $faveImg.src = student.image;
+  $favePhotoDiv.appendChild($faveImg);
+  var $trashIcon = document.createElement('i');
+  $trashIcon.setAttribute('class', 'fa fa-trash-o');
+  $favePhotoDiv.appendChild($trashIcon);
+  var $faveName = document.createElement('p');
+  $faveName.setAttribute('class', 'favorite-name');
+  $faveName.textContent = student.name;
+  $favePhotoDiv.appendChild($faveName);
+  return $favoritesDiv;
+}
+
+function handleFavorites(event) {
+  data.view = 'favorites';
+  $heartIcon.className = 'fa-solid fa-heart';
+
+  var clickedHeart = event.target.getAttribute('id');
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    var response = xhr.response;
+    for (var i = 0; i < response.length; i++) {
+      if (clickedHeart === response[i].name) {
+        $favoritesList.appendChild(renderFavoritesList(response[i]));
+        $homeView.className = 'hidden home-view container';
+        $characterInfoView.className = 'hidden character-info container';
+        $favoritesView.className = 'favorites container';
+      }
+    }
+  });
+  xhr.send();
+}
+$alumniInfo.addEventListener('click', handleFavorites);
+
+// function handleBacktoAlumniList(event) {
+//   data.view = 'home-view';
+//   $homeView.className = 'home-view';
+//   $characterInfoView.className = 'hidden character-info';
 // }
+// $backtoHomepage.addEventListener('click', handleBacktoAlumniList);

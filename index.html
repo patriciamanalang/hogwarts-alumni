@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -32,7 +33,7 @@
     </div>
   </header>
   <main>
-    <div class="hidden container" data-view="home-view" id="home-view">
+    <div class="home-view container" data-view="home-view" id="home-view">
       <div class="row">
         <div class="column-full">
           <form>
@@ -46,7 +47,7 @@
       <div class="characters">
       </div>
     </div>
-    <div class="container" data-view="favorites">
+    <div class="hidden favorites container" data-view="favorites" id="favorites">
       <div class="row">
         <div class="column-full">
           <h3 class="favorites-header">Favorites</h3>
@@ -54,16 +55,16 @@
         </div>
       </div>
       <div class="favorites-list">
-        <div class="column-half">
+        <!-- <div class="column-half">
           <div class="favorite-photo-div">
             <img class="favorite-photo" src="images/harry.jpg">
-            <iconify-icon class="trash-icon" icon="bx:trash-alt"></iconify-icon>
+            <i class="fa fa-trash-o"></i>
             <p class="favorite-name">Harry Potter</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
-    <div class="hidden container" data-view="character-info" id="character-info">
+    <div class="character-info container" data-view="character-info" id="character-info">
       <div class="row">
         <div class="column-full">
           <p class="back">Back to alumni list</p>
@@ -73,6 +74,7 @@
       </div>
   </main>
   <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
   <script src="https://kit.fontawesome.com/948b28f228.js" crossorigin="anonymous"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
@@ -80,3 +82,4 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+<!-- <iconify-icon class="solid-heart" icon="mdi:cards-heart"></iconify-icon> -->
