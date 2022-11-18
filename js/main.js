@@ -168,3 +168,35 @@ function renderCharacterInfo(student) {
   $characterDetails.appendChild($hairColor);
   return $alumniInfoDiv;
 }
+/*  <div class="favorites-list">
+      <div class="column-half">
+        <div class="favorite-photo-div">
+          <img class="favorite-photo" src="images/harry.jpg">
+            <iconify-icon class="trash-icon" icon="bx:trash-alt"></iconify-icon>
+            <p class="favorite-name">Harry Potter</p>
+        </div>
+      </div>
+    </div> */
+// function renderFavoritesList(student) {
+//   var $favoritesDiv = document.createElement('div');
+//   $favoritesDiv.setAttribute('class', 'favorites-list');
+//   var $columnHalfDiv = document.createElement('div');
+//   $columnHalfDiv.setAttribute('class', 'column-half');
+//   $favoritesDiv.appendChild($columnHalfDiv);
+//   var $favePhotoDiv = document.createElement('div');
+//   $favePhotoDiv.setAttribute('class', 'favorite-photo-div');
+//   $columnHalfDiv.appendChild($favePhotoDiv);
+//   var $faveImg = document.createElement('img');
+//   $faveImg.setAttribute('class', 'favorite-photo');
+//   $faveImg.src = student.image;
+//   $favePhotoDiv.appendChild($faveImg);
+//   var $trashIcon = document.createElement('iconify-icon');
+//   $trashIcon.setAttribute('class', 'trash-icon');
+//   $trashIcon.setAttribute('icon', 'bx:trash-alt');
+//   $faveImg.appendChild($trashIcon);
+//   var $faveName = document.createElement('p');
+//   $faveName.setAttribute('class', 'favorite-name');
+//   $faveName.textContent = student.name;
+//   $faveImg.appendChild($faveName);
+//   return $favoritesDiv;
+// }
