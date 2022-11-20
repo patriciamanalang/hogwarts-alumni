@@ -1,4 +1,13 @@
+
 var $characters = document.querySelector('.characters');
+var $search = document.querySelector('#search');
+var $homeView = document.querySelector('#home-view');
+var $characterInfoView = document.querySelector('#character-info');
+var $alumniInfo = document.querySelector('.alumni-info');
+var $homeIcon = document.querySelector('.home-icon');
+var $favoritesList = document.querySelector('.favorites-list');
+var $favoritesView = document.querySelector('#favorites');
+var $noFavorites = document.querySelector('.no-favorites-page');
 
 function getHarryPotterData() {
   var xhr = new XMLHttpRequest();
@@ -11,6 +20,7 @@ function getHarryPotterData() {
       $characters.appendChild(renderCharacters(xhr.response[i]));
     }
   });
+
   xhr.send();
 }
 getHarryPotterData();
@@ -59,8 +69,6 @@ function renderCharacters(student) {
 
 }
 
-var $search = document.querySelector('#search');
-
 function handleSearch(event) {
   var $characterNodes = $characters.querySelectorAll('.column-half');
   for (var i = 0; i < $characterNodes.length; i++) {
@@ -74,10 +82,8 @@ function handleSearch(event) {
     }
   }
 }
-var $homeView = document.querySelector('#home-view');
-var $characterInfoView = document.querySelector('#character-info');
+
 $search.addEventListener('input', handleSearch);
-var $alumniInfo = document.querySelector('.alumni-info');
 
 function handleImageClick(event) {
   data.view = 'character-info';
@@ -91,8 +97,9 @@ function handleImageClick(event) {
     for (var i = 0; i < response.length; i++) {
       if (clickedImage === response[i].name) {
         $alumniInfo.appendChild(renderCharacterInfo(response[i]));
-        $homeView.className = 'container hidden';
-        $characterInfoView.className = 'container';
+        $homeView.className = 'home-view container hidden';
+        $characterInfoView.className = 'character-info container';
+        $favoritesView.className = 'hidden character-info container';
       }
     }
   });
@@ -103,7 +110,7 @@ $characters.addEventListener('click', handleImageClick);
 // <div class="row wrap alumni-info">
 //   <div class="column-half center-img">
 //     <img class="info-photo" src="images/harry.jpg">
-//     <iconify-icon class="heart-icon" icon="akar-icons:heart"></iconify-icon>
+//     <i class="fa-regular fa-heart" id="harry potter"></i>
 //     <p class="character-info-name">Harry Potter</p>
 //   </div>
 //   <div class="column-half character-details">
@@ -127,9 +134,9 @@ function renderCharacterInfo(student) {
   $img.setAttribute('class', 'info-photo');
   $img.src = student.image;
   $columnHalfDiv.appendChild($img);
-  var $heartIcon = document.createElement('iconify-icon');
-  $heartIcon.setAttribute('class', 'heart-icon');
-  $heartIcon.setAttribute('icon', 'akar-icons:heart');
+  var $heartIcon = document.createElement('i');
+  $heartIcon.setAttribute('class', 'fa-regular fa-heart');
+  $heartIcon.setAttribute('id', student.name);
   $columnHalfDiv.appendChild($heartIcon);
   var $characterName = document.createElement('p');
   $characterName.setAttribute('class', 'character-info-name');
@@ -168,3 +175,111 @@ function renderCharacterInfo(student) {
   $characterDetails.appendChild($hairColor);
   return $alumniInfoDiv;
 }
+/*  <div class="favorites-list">
+      <div class="column-half">
+        <div class="favorite-photo-div">
+          <img class="favorite-photo" src="images/harry.jpg">
+          <i class="fa fa-trash-o"></i>
+          <p class="favorite-name">Harry Potter</p>
+        </div>
+      </div>
+    </div> */
+function renderFavoritesList(student) {
+  var $favoritesDiv = document.createElement('div');
+  $favoritesDiv.setAttribute('class', 'favorites-list');
+  var $columnHalfDiv = document.createElement('div');
+  $columnHalfDiv.setAttribute('class', 'column-half');
+  $favoritesDiv.appendChild($columnHalfDiv);
+  var $favePhotoDiv = document.createElement('div');
+  $favePhotoDiv.setAttribute('class', 'favorite-photo-div');
+  $columnHalfDiv.appendChild($favePhotoDiv);
+  var $faveImg = document.createElement('img');
+  $faveImg.setAttribute('class', 'favorite-photo');
+  $faveImg.src = student.image;
+  $favePhotoDiv.appendChild($faveImg);
+  var $trashIcon = document.createElement('i');
+  $trashIcon.setAttribute('class', 'fa fa-trash-o');
+  $favePhotoDiv.appendChild($trashIcon);
+  var $faveName = document.createElement('p');
+  $faveName.setAttribute('class', 'favorite-name');
+  $faveName.textContent = student.name;
+  $favePhotoDiv.appendChild($faveName);
+  return $favoritesDiv;
+}
+
+function handleFavorites(event) {
+  var clickedHeart = event.target.getAttribute('id');
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load', function () {
+    var response = xhr.response;
+    for (var i = 0; i < response.length; i++) {
+      if (clickedHeart === response[i].name) {
+        // $favoritesList.appendChild(renderFavoritesList(response[i]));
+        data.favorites.unshift(response[i]);
+        $favoritesList.prepend(renderFavoritesList(response[i]));
+        $homeView.className = 'hidden home-view container';
+        $characterInfoView.className = 'character-info container';
+        // $favoritesView.className = 'hidden favorites container';
+        if (data.favorites.length > 0) {
+          $noFavorites.className = 'hidden no-favorites-page';
+        }
+      }
+    }
+  });
+  xhr.send();
+  if (event.target.tagName === 'I') {
+    event.target.className = 'fa-solid fa-heart';
+  }
+
+}
+$alumniInfo.addEventListener('click', handleFavorites);
+
+function handleHomeIcon(event) {
+  var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
+  $homeView.className = 'home-view container';
+  $favoritesView.className = 'hidden favorites container';
+  $characterInfoView.className = 'hidden character-info container';
+  for (var i = 0; i < favoritesNodes.length; i++) {
+    $alumniInfo.removeChild(favoritesNodes[i]);
+  }
+}
+$homeIcon.addEventListener('click', handleHomeIcon);
+
+var $favoritesNavIcon = document.querySelector('#favorites-icon');
+
+function showFavorites(event) {
+  $homeView.className = 'hidden home-view container';
+  $characterInfoView.className = 'hidden character-info container';
+  $favoritesView.className = 'favorites container';
+  // for (var k = 0; k < data.favorites.length; k++) {
+  //   $favoritesList.appendChild(renderFavoritesList(data.favorites[k]));
+  // }
+}
+
+$favoritesNavIcon.addEventListener('click', showFavorites);
+
+var $back = document.querySelector('.back');
+
+function handleBack(event) {
+  $homeView.className = 'home-view container';
+  $characterInfoView.className = 'hidden character-info container';
+  $favoritesView.className = 'favorites container';
+  var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
+  for (var i = 0; i < favoritesNodes.length; i++) {
+    $alumniInfo.removeChild(favoritesNodes[i]);
+  }
+}
+$back.addEventListener('click', handleBack);
+
+function handleDOMContentLoaded() {
+  for (var k = 0; k < data.favorites.length; k++) {
+    $favoritesList.appendChild(renderFavoritesList(data.favorites[k]));
+  }
+  if (data.favorites.length > 0) {
+    $noFavorites.className = 'hidden no-favorites-page';
+  }
+}
+
+window.addEventListener('DOMContentLoaded', handleDOMContentLoaded);

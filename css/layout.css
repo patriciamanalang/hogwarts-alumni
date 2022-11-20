@@ -23,11 +23,18 @@
   width: 50%;
 }
 
-@media only screen and (min-width: 575px) {
+@media only screen and (min-width: 400px) {
   .title {
     font-size: 26px;
     margin: auto;
     margin-top: 1rem;
+  }
+
+  .favorite-name {
+    font-family: Baskerville, sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    text-align: center;
   }
 
   .nav-logo {
@@ -83,12 +90,52 @@
     padding-left: 3rem;
   }
 
-  .heart-icon {
+  .favorite-photo-div {
+    text-align: center;
+  }
+
+  .fa-solid {
     position: relative;
     left: 9.5rem;
     color: white;
     bottom: 21.3rem;
     font-size: 1.8rem;
+  }
+
+  .fa-regular {
+    position: relative;
+    left: 9.5rem;
+    color: white;
+    bottom: 21.3rem;
+    font-size: 1.8rem;
+  }
+
+  .favorites-header {
+    font-family: Baskerville, sans-serif;
+    color: rgb(137, 127, 127);
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .no-favorites-page {
+    font-family: Baskerville, sans-serif;
+    color: rgb(137, 127, 127);
+    text-align: center;
+    margin-top: 8rem;
+    font-size: 2rem;
+  }
+
+  .fa-trash-o {
+    position: relative;
+    right: 2.4rem;
+    font-size: 24px;
+    bottom: 14rem;
+    color: white;
+  }
+
+  div.favorites-list {
+    margin: 0;
+    width: 100%;
   }
 }
 
@@ -100,6 +147,18 @@
     right: 0;
     bottom: 0;
     left: 3rem;
+  }
+
+  .favorite-photo-div {
+    text-align: center;
+  }
+
+  .favorite-name {
+    font-family: Baskerville, sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    display: inline;
+    padding-right: 1rem;
   }
 
   .center-img {
@@ -137,7 +196,15 @@
     flex-wrap: wrap;
   }
 
-  .heart-icon {
+  .fa-solid {
+    position: relative;
+    right: 1.8rem;
+    bottom: 13.8rem;
+    font-size: 20px;
+    color: white;
+  }
+
+  .fa-regular {
     position: relative;
     right: 1.8rem;
     bottom: 13.8rem;
@@ -151,5 +218,33 @@
     margin-top: 10px;
     font-size: 25px;
     margin-right: 16px;
+  }
+
+  .favorites-header {
+    font-family: Baskerville, sans-serif;
+    color: rgb(137, 127, 127);
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .no-favorites-page {
+    font-family: Baskerville, sans-serif;
+    color: rgb(137, 127, 127);
+    text-align: center;
+    margin-top: 8rem;
+    font-size: 20px;
+  }
+
+  .fa-trash-o {
+    position: relative;
+    left: 8.8rem;
+    font-size: 24px;
+    bottom: 15.5rem;
+    color: white;
+  }
+
+  div.favorites-list {
+    margin: 0;
+    width: 100%;
   }
 }
