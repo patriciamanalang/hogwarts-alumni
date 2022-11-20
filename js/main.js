@@ -1,12 +1,13 @@
+
 var $characters = document.querySelector('.characters');
 var $search = document.querySelector('#search');
 var $homeView = document.querySelector('#home-view');
 var $characterInfoView = document.querySelector('#character-info');
 var $alumniInfo = document.querySelector('.alumni-info');
-// var $backtoHomepage = document.querySelector('.back');
-var $heartIcon = document.querySelectorAll('.fa-heart');
+var $homeIcon = document.querySelector('.home-icon');
 var $favoritesList = document.querySelector('.favorites-list');
 var $favoritesView = document.querySelector('#favorites');
+var $noFavorites = document.querySelector('.no-favorites-page');
 
 function getHarryPotterData() {
   var xhr = new XMLHttpRequest();
@@ -19,6 +20,7 @@ function getHarryPotterData() {
       $characters.appendChild(renderCharacters(xhr.response[i]));
     }
   });
+
   xhr.send();
 }
 getHarryPotterData();
@@ -95,8 +97,9 @@ function handleImageClick(event) {
     for (var i = 0; i < response.length; i++) {
       if (clickedImage === response[i].name) {
         $alumniInfo.appendChild(renderCharacterInfo(response[i]));
-        $homeView.className = 'container hidden';
-        $characterInfoView.className = 'container';
+        $homeView.className = 'home-view container hidden';
+        $characterInfoView.className = 'character-info container';
+        $favoritesView.className = 'hidden character-info container';
       }
     }
   });
@@ -176,7 +179,7 @@ function renderCharacterInfo(student) {
       <div class="column-half">
         <div class="favorite-photo-div">
           <img class="favorite-photo" src="images/harry.jpg">
-          <i class="fa-regular fa-trash"></i>
+          <i class="fa fa-trash-o"></i>
           <p class="favorite-name">Harry Potter</p>
         </div>
       </div>
@@ -205,9 +208,6 @@ function renderFavoritesList(student) {
 }
 
 function handleFavorites(event) {
-  data.view = 'favorites';
-  $heartIcon.className = 'fa-solid fa-heart';
-
   var clickedHeart = event.target.getAttribute('id');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
@@ -216,20 +216,70 @@ function handleFavorites(event) {
     var response = xhr.response;
     for (var i = 0; i < response.length; i++) {
       if (clickedHeart === response[i].name) {
-        $favoritesList.appendChild(renderFavoritesList(response[i]));
+        // $favoritesList.appendChild(renderFavoritesList(response[i]));
+        data.favorites.unshift(response[i]);
+        $favoritesList.prepend(renderFavoritesList(response[i]));
         $homeView.className = 'hidden home-view container';
-        $characterInfoView.className = 'hidden character-info container';
-        $favoritesView.className = 'favorites container';
+        $characterInfoView.className = 'character-info container';
+        // $favoritesView.className = 'hidden favorites container';
+        if (data.favorites.length > 0) {
+          $noFavorites.className = 'hidden no-favorites-page';
+        }
       }
     }
   });
   xhr.send();
+  if (event.target.tagName === 'I') {
+    event.target.className = 'fa-solid fa-heart';
+  }
+
 }
 $alumniInfo.addEventListener('click', handleFavorites);
 
-// function handleBacktoAlumniList(event) {
-//   data.view = 'home-view';
-//   $homeView.className = 'home-view';
-//   $characterInfoView.className = 'hidden character-info';
-// }
-// $backtoHomepage.addEventListener('click', handleBacktoAlumniList);
+function handleHomeIcon(event) {
+  var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
+  $homeView.className = 'home-view container';
+  $favoritesView.className = 'hidden favorites container';
+  $characterInfoView.className = 'hidden character-info container';
+  for (var i = 0; i < favoritesNodes.length; i++) {
+    $alumniInfo.removeChild(favoritesNodes[i]);
+  }
+}
+$homeIcon.addEventListener('click', handleHomeIcon);
+
+var $favoritesNavIcon = document.querySelector('#favorites-icon');
+
+function showFavorites(event) {
+  $homeView.className = 'hidden home-view container';
+  $characterInfoView.className = 'hidden character-info container';
+  $favoritesView.className = 'favorites container';
+  // for (var k = 0; k < data.favorites.length; k++) {
+  //   $favoritesList.appendChild(renderFavoritesList(data.favorites[k]));
+  // }
+}
+
+$favoritesNavIcon.addEventListener('click', showFavorites);
+
+var $back = document.querySelector('.back');
+
+function handleBack(event) {
+  $homeView.className = 'home-view container';
+  $characterInfoView.className = 'hidden character-info container';
+  $favoritesView.className = 'favorites container';
+  var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
+  for (var i = 0; i < favoritesNodes.length; i++) {
+    $alumniInfo.removeChild(favoritesNodes[i]);
+  }
+}
+$back.addEventListener('click', handleBack);
+
+function handleDOMContentLoaded() {
+  for (var k = 0; k < data.favorites.length; k++) {
+    $favoritesList.appendChild(renderFavoritesList(data.favorites[k]));
+  }
+  if (data.favorites.length > 0) {
+    $noFavorites.className = 'hidden no-favorites-page';
+  }
+}
+
+window.addEventListener('DOMContentLoaded', handleDOMContentLoaded);

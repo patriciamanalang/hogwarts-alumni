@@ -69,8 +69,15 @@
   text-align: center;
 }
 
-.favorite-photo,
 .photo {
+  object-fit: fill;
+  height: 16rem;
+  width: 12rem;
+  padding: 5px;
+  margin-left: 2px;
+}
+
+.favorite-photo {
   object-fit: fill;
   height: 16rem;
   width: 12rem;

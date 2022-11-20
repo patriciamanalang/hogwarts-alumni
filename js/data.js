@@ -1,10 +1,7 @@
 /* exported data */
 var data = {
   view: 'home-view',
-  favorites: [],
-  character: {},
-  characters: [],
-  delete: null
+  favorites: []
 };
 
 var previousDataJSON = localStorage.getItem('ajax-local-storage');
