@@ -30,13 +30,6 @@
     margin-top: 1rem;
   }
 
-  .favorite-name {
-    font-family: Baskerville, sans-serif;
-    font-weight: 300;
-    font-size: 13px;
-    text-align: center;
-  }
-
   .nav-logo {
     height: 20vh;
     position: relative;
@@ -46,7 +39,7 @@
   .info-photo {
     object-fit: fill;
     height: 350px;
-    width: 320px;
+    width: 290px;
     border-radius: 5px;
     margin-left: 3rem;
   }
@@ -90,13 +83,9 @@
     padding-left: 3rem;
   }
 
-  .favorite-photo-div {
-    text-align: center;
-  }
-
   .fa-solid {
     position: relative;
-    left: 9.5rem;
+    left: 9rem;
     color: white;
     bottom: 21.3rem;
     font-size: 1.8rem;
@@ -104,7 +93,7 @@
 
   .fa-regular {
     position: relative;
-    left: 9.5rem;
+    left: 9rem;
     color: white;
     bottom: 21.3rem;
     font-size: 1.8rem;
@@ -127,19 +116,22 @@
 
   .fa-trash-o {
     position: relative;
-    right: 2.4rem;
+    left: 2.6rem;
     font-size: 24px;
-    bottom: 14rem;
+    bottom: 15.3rem;
     color: white;
-  }
-
-  div.favorites-list {
-    margin: 0;
-    width: 100%;
   }
 }
 
 @media only screen and (max-width: 390px) {
+  i.fa-magnifying-glass {
+    color: rgb(175, 172, 172);
+    position: relative;
+    top: 13px;
+    right: 1.6rem;
+    font-size: 1rem;
+  }
+
   .title {
     font-size: 17px;
     position: relative;
@@ -147,18 +139,6 @@
     right: 0;
     bottom: 0;
     left: 3rem;
-  }
-
-  .favorite-photo-div {
-    text-align: center;
-  }
-
-  .favorite-name {
-    font-family: Baskerville, sans-serif;
-    font-weight: 300;
-    font-size: 15px;
-    display: inline;
-    padding-right: 1rem;
   }
 
   .center-img {
@@ -237,14 +217,9 @@
 
   .fa-trash-o {
     position: relative;
-    left: 8.8rem;
+    left: 2.6rem;
     font-size: 24px;
-    bottom: 15.5rem;
+    bottom: 15.3rem;
     color: white;
-  }
-
-  div.favorites-list {
-    margin: 0;
-    width: 100%;
   }
 }
