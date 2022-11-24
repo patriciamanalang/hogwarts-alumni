@@ -11,7 +11,9 @@ var $noFavorites = document.querySelector('.no-favorites-page');
 var $favoritesNavIcon = document.querySelector('#favorites-icon');
 var $back = document.querySelector('.back');
 var $navLogo = document.querySelector('.nav-logo');
-// var $deleteModal = document.querySelector('.modal');
+var $deleteModal = document.querySelector('.modal');
+var $cancelButton = document.querySelector('.cancel');
+var $deleteButton = document.querySelector('.delete');
 
 function getHarryPotterData() {
   var xhr = new XMLHttpRequest();
@@ -180,7 +182,7 @@ function renderCharacterInfo(student) {
           <img class="photo" src="images/harry.jpg">
           <div class="name-div">
             <p class="character-name">Harry Potter</p>
-            <i class="fa fa-trash-o"></i>
+            <i class="fa fa-trash-o" id=" Harry Potter"></i>
           </div>
         </div>
       </div>
@@ -188,6 +190,7 @@ function renderCharacterInfo(student) {
 function renderFavoritesList(student) {
   var $favoritesDiv = document.createElement('div');
   $favoritesDiv.setAttribute('class', 'favorites-list');
+  $favoritesDiv.setAttribute('id', student.name);
   var $columnHalfDiv = document.createElement('div');
   $columnHalfDiv.setAttribute('class', 'column-half');
   $favoritesDiv.appendChild($columnHalfDiv);
@@ -207,6 +210,7 @@ function renderFavoritesList(student) {
   $faveNameDiv.appendChild($faveName);
   var $trashIcon = document.createElement('i');
   $trashIcon.setAttribute('class', 'fa fa-trash-o');
+  $trashIcon.setAttribute('id', student.name);
   $faveNameDiv.appendChild($trashIcon);
 
   return $favoritesDiv;
@@ -284,19 +288,50 @@ function handleDOMContentLoaded() {
   }
   if (data.favorites.length > 0) {
     $noFavorites.className = 'hidden no-favorites-page';
+  } else {
+    $noFavorites.className = 'no-favorites-page';
   }
 }
 
-// function handleTrashIcon(event) {
-//   var $favoritesListNodes = $favoritesList.querySelectorAll('.favorites-list');
-//   for (var x = 0; x < $favoritesListNodes.length; x++) {
-//     if (event.target.tagName === 'I') {
-//       $deleteModal.className = 'container modal';
-//     }
-//   }
-// }
-// $favoritesList.addEventListener('click', handleTrashIcon);
+function handleTrashIcon(event) {
+  if (event.target.tagName === 'I') {
+    // console.log('the trash icon was clicked!');
+    $deleteModal.className = 'container modal';
+    var characterId = event.target.getAttribute('id');
+    for (var i = 0; i < data.favorites.length; i++) {
+      if (characterId === data.favorites[i].name) {
+        data.delete = data.favorites[i];
+        // console.log(data.delete);
+        break;
+      }
+    }
+  }
+}
 
+function handleCancelButton(event) {
+  $deleteModal.className = 'hidden container modal';
+}
+
+function handleDeleteButton(event) {
+  var favListDiv = $favoritesList.querySelectorAll('.column-half');
+  if (data.delete !== null) {
+    for (var i = 0; i < data.favorites.length; i++) {
+      if (data.delete.name === data.favorites[i].name) {
+        data.favorites.splice(i, 1);
+        favListDiv[i].remove();
+        handleCancelButton();
+      }
+      if (data.favorites.length === 0) {
+        $noFavorites.className = 'no-favorites-page';
+      }
+    }
+  }
+  $noFavorites.className = 'hidden no-favorites-page';
+}
+
+$deleteButton.addEventListener('click', handleDeleteButton);
+$cancelButton.addEventListener('click', handleCancelButton);
+$favoritesList.addEventListener('click', handleTrashIcon);
 window.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
 $back.addEventListener('click', handleBack);
 $search.addEventListener('input', handleSearch);
@@ -305,9 +340,3 @@ $homeIcon.addEventListener('click', handleHomeIcon);
 $alumniInfo.addEventListener('click', handleFavorites);
 $characters.addEventListener('click', handleImageClick);
 $navLogo.addEventListener('click', handleLogoClick);
-
-// var $cancelButton = document.querySelector('.cancel');
-// function handleCancelButton(event) {
-//   $deleteModal.className = 'hidden container modal';
-// }
-// $cancelButton.addEventListener('click', handleCancelButton);
