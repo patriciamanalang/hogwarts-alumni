@@ -28,7 +28,7 @@
     position: relative;
     left: 3rem;
     bottom: 1rem;
-    top: 10px;
+    top: 2px;
     color: white;
     font-family: Baskervville, serif;
     font-size: 25px;
@@ -37,7 +37,7 @@
   }
 
   .nav-logo {
-    width: 30vw;
+    width: 20vw;
     position: relative;
     left: 1rem;
     top: 10px;
