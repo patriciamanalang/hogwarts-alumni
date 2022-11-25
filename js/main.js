@@ -8,6 +8,12 @@ var $homeIcon = document.querySelector('.home-icon');
 var $favoritesList = document.querySelector('.favorites-list');
 var $favoritesView = document.querySelector('#favorites');
 var $noFavorites = document.querySelector('.no-favorites-page');
+var $favoritesNavIcon = document.querySelector('#favorites-icon');
+var $back = document.querySelector('.back');
+var $navLogo = document.querySelector('.nav-logo');
+var $deleteModal = document.querySelector('.modal');
+var $cancelButton = document.querySelector('.cancel');
+var $deleteButton = document.querySelector('.delete');
 
 function getHarryPotterData() {
   var xhr = new XMLHttpRequest();
@@ -20,7 +26,6 @@ function getHarryPotterData() {
       $characters.appendChild(renderCharacters(xhr.response[i]));
     }
   });
-
   xhr.send();
 }
 getHarryPotterData();
@@ -66,7 +71,6 @@ function renderCharacters(student) {
   $h3.textContent = student.name;
   $nameDiv.appendChild($h3);
   return $outerDiv;
-
 }
 
 function handleSearch(event) {
@@ -82,8 +86,6 @@ function handleSearch(event) {
     }
   }
 }
-
-$search.addEventListener('input', handleSearch);
 
 function handleImageClick(event) {
   data.view = 'character-info';
@@ -105,7 +107,6 @@ function handleImageClick(event) {
   });
   xhr.send();
 }
-$characters.addEventListener('click', handleImageClick);
 
 // <div class="row wrap alumni-info">
 //   <div class="column-half center-img">
@@ -177,33 +178,41 @@ function renderCharacterInfo(student) {
 }
 /*  <div class="favorites-list">
       <div class="column-half">
-        <div class="favorite-photo-div">
-          <img class="favorite-photo" src="images/harry.jpg">
-          <i class="fa fa-trash-o"></i>
-          <p class="favorite-name">Harry Potter</p>
+        <div class="photo-div">
+          <img class="photo" src="images/harry.jpg">
+          <div class="name-div">
+            <p class="character-name">Harry Potter</p>
+            <i class="fa fa-trash-o" id=" Harry Potter"></i>
+          </div>
         </div>
       </div>
     </div> */
 function renderFavoritesList(student) {
   var $favoritesDiv = document.createElement('div');
   $favoritesDiv.setAttribute('class', 'favorites-list');
+  $favoritesDiv.setAttribute('id', student.name);
   var $columnHalfDiv = document.createElement('div');
   $columnHalfDiv.setAttribute('class', 'column-half');
   $favoritesDiv.appendChild($columnHalfDiv);
   var $favePhotoDiv = document.createElement('div');
-  $favePhotoDiv.setAttribute('class', 'favorite-photo-div');
+  $favePhotoDiv.setAttribute('class', 'photo-div');
   $columnHalfDiv.appendChild($favePhotoDiv);
   var $faveImg = document.createElement('img');
-  $faveImg.setAttribute('class', 'favorite-photo');
+  $faveImg.setAttribute('class', 'photo');
   $faveImg.src = student.image;
   $favePhotoDiv.appendChild($faveImg);
+  var $faveNameDiv = document.createElement('div');
+  $faveNameDiv.setAttribute('class', 'name-div');
+  $favePhotoDiv.appendChild($faveNameDiv);
+  var $faveName = document.createElement('p');
+  $faveName.setAttribute('class', 'character-name');
+  $faveName.textContent = student.name;
+  $faveNameDiv.appendChild($faveName);
   var $trashIcon = document.createElement('i');
   $trashIcon.setAttribute('class', 'fa fa-trash-o');
-  $favePhotoDiv.appendChild($trashIcon);
-  var $faveName = document.createElement('p');
-  $faveName.setAttribute('class', 'favorite-name');
-  $faveName.textContent = student.name;
-  $favePhotoDiv.appendChild($faveName);
+  $trashIcon.setAttribute('id', student.name);
+  $faveNameDiv.appendChild($trashIcon);
+
   return $favoritesDiv;
 }
 
@@ -232,9 +241,7 @@ function handleFavorites(event) {
   if (event.target.tagName === 'I') {
     event.target.className = 'fa-solid fa-heart';
   }
-
 }
-$alumniInfo.addEventListener('click', handleFavorites);
 
 function handleHomeIcon(event) {
   var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
@@ -245,9 +252,6 @@ function handleHomeIcon(event) {
     $alumniInfo.removeChild(favoritesNodes[i]);
   }
 }
-$homeIcon.addEventListener('click', handleHomeIcon);
-
-var $favoritesNavIcon = document.querySelector('#favorites-icon');
 
 function showFavorites(event) {
   $homeView.className = 'hidden home-view container';
@@ -258,10 +262,6 @@ function showFavorites(event) {
   // }
 }
 
-$favoritesNavIcon.addEventListener('click', showFavorites);
-
-var $back = document.querySelector('.back');
-
 function handleBack(event) {
   $homeView.className = 'home-view container';
   $characterInfoView.className = 'hidden character-info container';
@@ -271,7 +271,16 @@ function handleBack(event) {
     $alumniInfo.removeChild(favoritesNodes[i]);
   }
 }
-$back.addEventListener('click', handleBack);
+
+function handleLogoClick(event) {
+  $homeView.className = 'home-view container';
+  $characterInfoView.className = 'hidden character-info container';
+  $favoritesView.className = 'hidden favorites container';
+  var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
+  for (var i = 0; i < favoritesNodes.length; i++) {
+    $alumniInfo.removeChild(favoritesNodes[i]);
+  }
+}
 
 function handleDOMContentLoaded() {
   for (var k = 0; k < data.favorites.length; k++) {
@@ -279,7 +288,56 @@ function handleDOMContentLoaded() {
   }
   if (data.favorites.length > 0) {
     $noFavorites.className = 'hidden no-favorites-page';
+  } else {
+    $noFavorites.className = 'no-favorites-page';
   }
 }
 
+function handleTrashIcon(event) {
+  if (event.target.tagName === 'I') {
+    // console.log('the trash icon was clicked!');
+    $deleteModal.className = 'container modal';
+    var characterId = event.target.getAttribute('id');
+    for (var i = 0; i < data.favorites.length; i++) {
+      if (characterId === data.favorites[i].name) {
+        data.delete = data.favorites[i];
+        // console.log(data.delete);
+        break;
+      }
+    }
+  }
+}
+
+function handleCancelButton(event) {
+  $deleteModal.className = 'hidden container modal';
+}
+
+function handleDeleteButton(event) {
+  var favListDiv = $favoritesList.querySelectorAll('.column-half');
+  if (data.delete !== null) {
+    for (var i = 0; i < data.favorites.length; i++) {
+      if (data.delete.name === data.favorites[i].name) {
+        data.favorites.splice(i, 1);
+        favListDiv[i].remove();
+        handleCancelButton();
+      }
+    }
+  }
+  if (data.favorites.length === 0) {
+    $noFavorites.className = 'no-favorites-page';
+  } else {
+    $noFavorites.className = ' hidden no-favorites-page';
+  }
+}
+
+$deleteButton.addEventListener('click', handleDeleteButton);
+$cancelButton.addEventListener('click', handleCancelButton);
+$favoritesList.addEventListener('click', handleTrashIcon);
 window.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+$back.addEventListener('click', handleBack);
+$search.addEventListener('input', handleSearch);
+$favoritesNavIcon.addEventListener('click', showFavorites);
+$homeIcon.addEventListener('click', handleHomeIcon);
+$alumniInfo.addEventListener('click', handleFavorites);
+$characters.addEventListener('click', handleImageClick);
+$navLogo.addEventListener('click', handleLogoClick);

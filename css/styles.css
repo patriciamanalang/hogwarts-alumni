@@ -1,5 +1,6 @@
 .nav-logo {
-  height: 12vh;
+  height: 10vh;
+  flex-basis: 20%;
   margin-top: 1rem;
   position: relative;
   right: 2rem;
@@ -10,11 +11,11 @@
   text-align: center;
   justify-content: center;
   align-items: center;
+  width: 80%;
   color: white;
   font-family: Baskervville, serif;
-  font-size: 14px;
+  font-size: 25px;
   font-weight: 200;
-  width: 80%;
 }
 
 .nav {
@@ -50,13 +51,6 @@
   padding: 15px;
 }
 
-.fa-magnifying-glass {
-  color: rgb(175, 172, 172);
-  margin-top: 1.5rem;
-  position: relative;
-  right: 1.5rem;
-}
-
 .characters,
 .favorites-list {
   display: flex;
@@ -75,19 +69,6 @@
   width: 12rem;
   padding: 5px;
   margin-left: 2px;
-}
-
-.favorite-photo {
-  object-fit: fill;
-  height: 16rem;
-  width: 12rem;
-  padding: 5px;
-  margin-left: 2px;
-}
-
-.favorite-photo-div {
-  margin-top: 1rem;
-  text-align: center;
 }
 
 .character-name {
@@ -114,4 +95,58 @@
   color: rgb(145, 136, 136);
   text-decoration: underline;
   margin-left: 10px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgb(0 0 0 / 80%);
+}
+
+.rectangle {
+  background-color: rgb(217, 217, 217);
+  width: 14rem;
+  height: 9rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.delete-modal-text {
+  text-align: center;
+  font-family: Baskerville, sans-serif;
+  font-weight: 300;
+}
+
+.delete,
+.cancel {
+  font-family: Baskerville, sans-serif;
+  font-weight: 300;
+  border: none;
+  padding: 5px;
+}
+
+.delete {
+  background-color: rgb(213, 65, 65);
+}
+
+.cancel {
+  background-color: rgb(181, 176, 176);
+}
+
+.modal-buttons {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
