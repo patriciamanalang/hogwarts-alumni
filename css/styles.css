@@ -1,5 +1,6 @@
 .nav-logo {
-  height: 12vh;
+  height: 10vh;
+  flex-basis: 20%;
   margin-top: 1rem;
   position: relative;
   right: 2rem;
@@ -10,11 +11,11 @@
   text-align: center;
   justify-content: center;
   align-items: center;
+  width: 80%;
   color: white;
   font-family: Baskervville, serif;
-  font-size: 14px;
+  font-size: 25px;
   font-weight: 200;
-  width: 80%;
 }
 
 .nav {

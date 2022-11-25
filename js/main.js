@@ -321,12 +321,13 @@ function handleDeleteButton(event) {
         favListDiv[i].remove();
         handleCancelButton();
       }
-      if (data.favorites.length === 0) {
-        $noFavorites.className = 'no-favorites-page';
-      }
     }
   }
-  $noFavorites.className = 'hidden no-favorites-page';
+  if (data.favorites.length === 0) {
+    $noFavorites.className = 'no-favorites-page';
+  } else {
+    $noFavorites.className = ' hidden no-favorites-page';
+  }
 }
 
 $deleteButton.addEventListener('click', handleDeleteButton);
