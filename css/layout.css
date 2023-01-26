@@ -36,13 +36,6 @@
     margin-left: 1rem;
   }
 
-  .nav-logo {
-    width: 20vw;
-    position: relative;
-    left: 1rem;
-    top: 10px;
-  }
-
   .info-photo {
     object-fit: fill;
     height: 350px;
@@ -131,6 +124,14 @@
 }
 
 @media only screen and (max-width: 575px) {
+  .nav-logo {
+    height: 10vh;
+    flex-basis: 100%;
+    margin-top: 1rem;
+    position: relative;
+    right: 2rem;
+  }
+
   i.fa-magnifying-glass {
     color: rgb(175, 172, 172);
     position: relative;
@@ -141,7 +142,7 @@
 
   .title {
     position: relative;
-    left: 3rem;
+    left: 2rem;
     color: white;
     font-family: Baskervville, serif;
     font-size: 20px;
