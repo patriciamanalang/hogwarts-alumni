@@ -92,7 +92,7 @@ function handleImageClick(event) {
   var clickedImage = event.target.getAttribute('id');
   // console.log(clickedImage);
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
+  xhr.open('GET', 'https://hp-api.onrender.com/api/characters');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     var response = xhr.response;
@@ -219,7 +219,7 @@ function renderFavoritesList(student) {
 function handleFavorites(event) {
   var clickedHeart = event.target.getAttribute('id');
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://hp-api.herokuapp.com/api/characters');
+  xhr.open('GET', 'https://hp-api.onrender.com/api/characters');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     var response = xhr.response;
