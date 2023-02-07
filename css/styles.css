@@ -4,6 +4,7 @@
   margin-top: 1rem;
   position: relative;
   right: 2rem;
+  cursor: pointer;
 }
 
 .nav-title {
@@ -16,6 +17,7 @@
   font-family: Baskervville, serif;
   font-size: 25px;
   font-weight: 200;
+  cursor: pointer;
 }
 
 .nav {
@@ -33,6 +35,7 @@
 .favorites-icon {
   color: white;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .search-box {
@@ -56,6 +59,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+  cursor: pointer;
 }
 
 .photo-div {
@@ -95,6 +99,7 @@
   color: rgb(145, 136, 136);
   text-decoration: underline;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .modal {
@@ -127,6 +132,7 @@
   font-weight: 300;
   border: none;
   padding: 5px;
+  cursor: pointer;
 }
 
 .delete {

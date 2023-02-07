@@ -89,9 +89,11 @@
     color: white;
     bottom: 21.3rem;
     font-size: 1.8rem;
+    cursor: pointer;
   }
 
   .fa-regular {
+    cursor: pointer;
     position: relative;
     left: 9rem;
     color: white;
@@ -185,6 +187,7 @@
   }
 
   .fa-solid {
+    cursor: pointer;
     position: relative;
     left: -1.8rem;
     bottom: 11rem;
@@ -193,6 +196,7 @@
   }
 
   .fa-regular {
+    cursor: pointer;
     position: relative;
     left: -1.8rem;
     bottom: 11rem;
