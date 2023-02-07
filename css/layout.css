@@ -23,7 +23,7 @@
   width: 50%;
 }
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 768px) {
   .title {
     position: relative;
     left: 3rem;
@@ -125,15 +125,7 @@
   }
 }
 
-@media only screen and (max-width: 575px) {
-  .nav-logo {
-    height: 10vh;
-    flex-basis: 100%;
-    margin-top: 1rem;
-    position: relative;
-    right: 2rem;
-  }
-
+@media only screen and (max-width: 1280px) {
   i.fa-magnifying-glass {
     color: rgb(175, 172, 172);
     position: relative;
