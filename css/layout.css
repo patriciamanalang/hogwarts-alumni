@@ -23,7 +23,7 @@
   width: 50%;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1279px) {
   .title {
     position: relative;
     left: 3rem;
@@ -58,7 +58,7 @@
     font-weight: 300;
     font-size: 22px;
     line-height: 2rem;
-    margin-top: 12px;
+    margin-top: 1rem;
     text-align: center;
     margin-left: 3rem;
   }
@@ -158,9 +158,8 @@
 
   .character-details {
     flex-basis: 100%;
-    text-align: center;
-    line-height: 18px;
-    margin-top: 1rem;
+    font-size: 10px;
+    margin-top: 2.5rem;
   }
 
   .character-detail-styling {
@@ -168,9 +167,9 @@
       Baskerville,
       sans-serif;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 2rem;
-    margin-top: 6px;
+    margin-top: 12px;
     text-align: center;
   }
 
