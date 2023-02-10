@@ -14,6 +14,7 @@ var $navLogo = document.querySelector('.nav-logo');
 var $deleteModal = document.querySelector('.modal');
 var $cancelButton = document.querySelector('.cancel');
 var $deleteButton = document.querySelector('.delete');
+var $loadingSpinner = document.querySelector('.lds-ring');
 
 function getHarryPotterData() {
   var xhr = new XMLHttpRequest();
@@ -94,6 +95,7 @@ function handleImageClick(event) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://hp-api.onrender.com/api/characters');
   xhr.responseType = 'json';
+  $loadingSpinner.className = 'lds-ring';
   xhr.addEventListener('load', function () {
     var response = xhr.response;
     for (var i = 0; i < response.length; i++) {
@@ -102,6 +104,7 @@ function handleImageClick(event) {
         $homeView.className = 'home-view container hidden';
         $characterInfoView.className = 'character-info container';
         $favoritesView.className = 'hidden character-info container';
+        $loadingSpinner.className = 'lds-ring hidden';
       }
     }
   });
@@ -182,15 +185,15 @@ function renderCharacterInfo(student) {
           <img class="photo" src="images/harry.jpg">
           <div class="name-div">
             <p class="character-name">Harry Potter</p>
-            <i class="fa fa-trash-o" id=" Harry Potter"></i>
           </div>
+          <i class="fa fa-trash-o" id=" Harry Potter"></i>
         </div>
       </div>
     </div> */
 function renderFavoritesList(student) {
   var $favoritesDiv = document.createElement('div');
   $favoritesDiv.setAttribute('class', 'favorites-list');
-  $favoritesDiv.setAttribute('id', student.name);
+  // $favoritesDiv.setAttribute('id', student.name);
   var $columnHalfDiv = document.createElement('div');
   $columnHalfDiv.setAttribute('class', 'column-half');
   $favoritesDiv.appendChild($columnHalfDiv);
@@ -211,7 +214,7 @@ function renderFavoritesList(student) {
   var $trashIcon = document.createElement('i');
   $trashIcon.setAttribute('class', 'fa fa-trash-o');
   $trashIcon.setAttribute('id', student.name);
-  $faveNameDiv.appendChild($trashIcon);
+  $favePhotoDiv.appendChild($trashIcon);
 
   return $favoritesDiv;
 }

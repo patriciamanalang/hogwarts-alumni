@@ -1,9 +1,45 @@
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 0.5rem;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rgb(119, 112, 112) transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .nav-logo {
   height: 10vh;
   flex-basis: 20%;
   margin-top: 1rem;
   position: relative;
-  right: 2rem;
+  right: 1rem;
+  cursor: pointer;
 }
 
 .nav-title {
@@ -21,7 +57,7 @@
 .nav {
   background-color: rgb(119, 112, 112);
   padding-right: 1rem;
-  padding-bottom: 5px;
+  padding-bottom: 7px;
 }
 
 .nav-icons {
@@ -33,6 +69,7 @@
 .favorites-icon {
   color: white;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .search-box {
@@ -56,6 +93,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+  cursor: pointer;
 }
 
 .photo-div {
@@ -95,6 +133,7 @@
   color: rgb(145, 136, 136);
   text-decoration: underline;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .modal {
@@ -127,6 +166,7 @@
   font-weight: 300;
   border: none;
   padding: 5px;
+  cursor: pointer;
 }
 
 .delete {
@@ -145,8 +185,33 @@
 }
 
 .center {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.alumni-info {
+  position: relative;
+  justify-content: center;
+}
+
+.fa-trash-o {
+  position: relative;
+  left: 7.5rem;
+  font-size: 24px;
+  bottom: 16.5rem;
+  color: white;
+}
+
+.lds-ring {
+  position: fixed;
+  z-index: 1000;
+  background-color: rgb(0 0 0 / 80%);
+  text-align: center;
+  justify-content: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding-right: 5rem;
 }
