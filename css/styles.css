@@ -3,7 +3,7 @@
   flex-basis: 20%;
   margin-top: 1rem;
   position: relative;
-  right: 2rem;
+  right: 1rem;
   cursor: pointer;
 }
 
@@ -17,13 +17,12 @@
   font-family: Baskervville, serif;
   font-size: 25px;
   font-weight: 200;
-  cursor: pointer;
 }
 
 .nav {
   background-color: rgb(119, 112, 112);
   padding-right: 1rem;
-  padding-bottom: 5px;
+  padding-bottom: 7px;
 }
 
 .nav-icons {
@@ -151,7 +150,7 @@
 }
 
 .center {
-  position: relative;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -159,6 +158,13 @@
 
 .alumni-info {
   position: relative;
-  top: 10rem;
   justify-content: center;
+}
+
+.fa-trash-o {
+  position: relative;
+  left: 7.5rem;
+  font-size: 24px;
+  bottom: 16.5rem;
+  color: white;
 }
