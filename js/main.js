@@ -1,4 +1,3 @@
-
 var $characters = document.querySelector('.characters');
 var $search = document.querySelector('#search');
 var $homeView = document.querySelector('#home-view');
@@ -140,7 +139,12 @@ function renderCharacterInfo(student) {
   $alumniInfoDiv.appendChild($columnHalfDiv);
   var $img = document.createElement('img');
   $img.setAttribute('class', 'info-photo');
-  $img.src = student.image;
+  // $img.src = student.image;
+  if (!student.image) {
+    $img.src = 'https://i.pinimg.com/originals/9d/16/cd/9d16cd553fe770f51639bb82ac14e70a.png';
+  } else {
+    $img.src = student.image;
+  }
   $columnHalfDiv.appendChild($img);
   var $heartIcon = document.createElement('i');
   $heartIcon.setAttribute('class', 'fa-regular fa-heart');
