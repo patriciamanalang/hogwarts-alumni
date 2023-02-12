@@ -62,7 +62,11 @@ function renderCharacters(student) {
   var $img = document.createElement('img');
   $img.setAttribute('class', 'photo');
   $img.setAttribute('id', student.name);
-  $img.src = student.image;
+  if (!student.image) {
+    $img.src = 'https://i.pinimg.com/originals/9d/16/cd/9d16cd553fe770f51639bb82ac14e70a.png';
+  } else {
+    $img.src = student.image;
+  }
   $photoDiv.appendChild($img);
   var $nameDiv = document.createElement('div');
   $nameDiv.setAttribute('class', 'name-div');
