@@ -2,7 +2,8 @@
 var data = {
   view: 'home-view',
   favorites: [],
-  delete: null
+  delete: null,
+  clicked: false
 };
 
 var previousDataJSON = localStorage.getItem('ajax-local-storage');

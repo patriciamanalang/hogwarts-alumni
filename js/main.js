@@ -1,4 +1,3 @@
-
 var $characters = document.querySelector('.characters');
 var $search = document.querySelector('#search');
 var $homeView = document.querySelector('#home-view');
@@ -62,7 +61,11 @@ function renderCharacters(student) {
   var $img = document.createElement('img');
   $img.setAttribute('class', 'photo');
   $img.setAttribute('id', student.name);
-  $img.src = student.image;
+  if (!student.image) {
+    $img.src = 'https://i.pinimg.com/originals/9d/16/cd/9d16cd553fe770f51639bb82ac14e70a.png';
+  } else {
+    $img.src = student.image;
+  }
   $photoDiv.appendChild($img);
   var $nameDiv = document.createElement('div');
   $nameDiv.setAttribute('class', 'name-div');
@@ -136,7 +139,12 @@ function renderCharacterInfo(student) {
   $alumniInfoDiv.appendChild($columnHalfDiv);
   var $img = document.createElement('img');
   $img.setAttribute('class', 'info-photo');
-  $img.src = student.image;
+  // $img.src = student.image;
+  if (!student.image) {
+    $img.src = 'https://i.pinimg.com/originals/9d/16/cd/9d16cd553fe770f51639bb82ac14e70a.png';
+  } else {
+    $img.src = student.image;
+  }
   $columnHalfDiv.appendChild($img);
   var $heartIcon = document.createElement('i');
   $heartIcon.setAttribute('class', 'fa-regular fa-heart');
@@ -220,6 +228,13 @@ function renderFavoritesList(student) {
 }
 
 function handleFavorites(event) {
+  if (event.target.className === 'fa-regular fa-heart') {
+    event.target.className = 'fa-solid fa-heart';
+    data.clicked = true;
+  } else if (event.target.className === 'fa-solid fa-heart') {
+    event.target.className = 'fa-regular fa-heart';
+    data.clicked = false;
+  }
   var clickedHeart = event.target.getAttribute('id');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://hp-api.onrender.com/api/characters');
@@ -227,23 +242,23 @@ function handleFavorites(event) {
   xhr.addEventListener('load', function () {
     var response = xhr.response;
     for (var i = 0; i < response.length; i++) {
-      if (clickedHeart === response[i].name) {
-        // $favoritesList.appendChild(renderFavoritesList(response[i]));
+      if (clickedHeart === response[i].name && data.clicked === true) {
         data.favorites.unshift(response[i]);
         $favoritesList.prepend(renderFavoritesList(response[i]));
         $homeView.className = 'hidden home-view container';
         $characterInfoView.className = 'character-info container';
-        // $favoritesView.className = 'hidden favorites container';
         if (data.favorites.length > 0) {
           $noFavorites.className = 'hidden no-favorites-page';
         }
       }
     }
   });
-  xhr.send();
-  if (event.target.tagName === 'I') {
-    event.target.className = 'fa-solid fa-heart';
+  if (data.favorites.length === 0) {
+    $noFavorites.className = 'no-favorites-page';
+  } else {
+    $noFavorites.className = ' hidden no-favorites-page';
   }
+  xhr.send();
 }
 
 function handleHomeIcon(event) {
@@ -260,9 +275,6 @@ function showFavorites(event) {
   $homeView.className = 'hidden home-view container';
   $characterInfoView.className = 'hidden character-info container';
   $favoritesView.className = 'favorites container';
-  // for (var k = 0; k < data.favorites.length; k++) {
-  //   $favoritesList.appendChild(renderFavoritesList(data.favorites[k]));
-  // }
 }
 
 function handleBack(event) {
@@ -298,13 +310,11 @@ function handleDOMContentLoaded() {
 
 function handleTrashIcon(event) {
   if (event.target.tagName === 'I') {
-    // console.log('the trash icon was clicked!');
     $deleteModal.className = 'container modal';
     var characterId = event.target.getAttribute('id');
     for (var i = 0; i < data.favorites.length; i++) {
       if (characterId === data.favorites[i].name) {
         data.delete = data.favorites[i];
-        // console.log(data.delete);
         break;
       }
     }
@@ -323,13 +333,14 @@ function handleDeleteButton(event) {
         data.favorites.splice(i, 1);
         favListDiv[i].remove();
         handleCancelButton();
+        if (data.favorites.length === 0) {
+          $noFavorites.className = 'no-favorites-page';
+        } else {
+          $noFavorites.className = ' hidden no-favorites-page';
+        }
+        return;
       }
     }
-  }
-  if (data.favorites.length === 0) {
-    $noFavorites.className = 'no-favorites-page';
-  } else {
-    $noFavorites.className = ' hidden no-favorites-page';
   }
 }
 
