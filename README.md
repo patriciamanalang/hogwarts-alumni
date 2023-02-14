@@ -9,7 +9,7 @@ As a Harry Potter fan, I've always loved learning fun facts about Harry Potter c
 
 ## Link Demo
 
-Try the application live at patriciamanalang.github.io/hogwarts-alumni/
+Try the application live here: https://patriciamanalang.github.io/hogwarts-alumni/
 
 ## Technologies Used
 
