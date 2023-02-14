@@ -30,13 +30,11 @@ Try the application live at patriciamanalang.github.io/hogwarts-alumni/
 ## Preview
 
 #### Users can search for a character
-Kapture 2023-02-13 at 16.40.16.gif
-
-#### Users can view information about a character
-Kapture 2023-02-13 at 16.43.20.gif
+![Kapture 2023-02-13 at 16 40 16](https://user-images.githubusercontent.com/109925604/218611689-9f13c69e-2891-4aa2-bee9-e2de05a08f21.gif)
 
 #### Users can "favorite" a character + view their favorite characters list
-Kapture 2023-02-13 at 16.51.12.gif
+![Kapture 2023-02-13 at 16 51 12](https://user-images.githubusercontent.com/109925604/218612155-c8e5f38a-10bc-46f4-90c6-b2c0f20124ab.gif)
+
 
 ### Getting Started
 1. Clone the repository.
