@@ -108,6 +108,7 @@ function handleImageClick(event) {
         $characterInfoView.className = 'character-info container';
         $favoritesView.className = 'hidden character-info container';
         $loadingSpinner.className = 'lds-ring hidden';
+        $back.className = 'back';
       }
     }
   });
@@ -275,6 +276,11 @@ function showFavorites(event) {
   $homeView.className = 'hidden home-view container';
   $characterInfoView.className = 'hidden character-info container';
   $favoritesView.className = 'favorites container';
+  $back.className = 'back hidden';
+  var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
+  for (var i = 0; i < favoritesNodes.length; i++) {
+    $alumniInfo.removeChild(favoritesNodes[i]);
+  }
 }
 
 function handleBack(event) {
@@ -291,10 +297,10 @@ function handleLogoClick(event) {
   $homeView.className = 'home-view container';
   $characterInfoView.className = 'hidden character-info container';
   $favoritesView.className = 'hidden favorites container';
-  var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
-  for (var i = 0; i < favoritesNodes.length; i++) {
-    $alumniInfo.removeChild(favoritesNodes[i]);
-  }
+  // var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
+  // for (var i = 0; i < favoritesNodes.length; i++) {
+  //   $alumniInfo.removeChild(favoritesNodes[i]);
+  // }
 }
 
 function handleDOMContentLoaded() {
