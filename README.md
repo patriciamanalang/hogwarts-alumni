@@ -29,6 +29,15 @@ Try the application live at patriciamanalang.github.io/hogwarts-alumni/
 
 ## Preview
 
+#### Users can search for a character
+Kapture 2023-02-13 at 16.40.16.gif
+
+#### Users can view information about a character
+Kapture 2023-02-13 at 16.43.20.gif
+
+#### Users can "favorite" a character + view their favorite characters list
+Kapture 2023-02-13 at 16.51.12.gif
+
 ### Getting Started
 1. Clone the repository.
 2. Open index.html with LiveReload Server.
