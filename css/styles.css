@@ -88,7 +88,13 @@
   padding: 15px;
 }
 
-.characters,
+.characters {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  cursor: pointer;
+}
+
 .favorites-list {
   display: flex;
   flex-wrap: wrap;
@@ -97,7 +103,7 @@
 }
 
 .photo-div {
-  margin-top: 1rem;
+  margin: 0;
   text-align: center;
 }
 
@@ -105,16 +111,26 @@
   object-fit: fill;
   height: 16rem;
   width: 12rem;
-  padding: 5px;
-  margin-left: 2px;
+  padding: 15px;
+
+  /* margin: 12px; */
+}
+
+.fave-photo {
+  object-fit: fill;
+  height: 15rem;
+  width: 11rem;
+  padding: 16px;
 }
 
 .character-name {
   text-align: center;
   font-family: Baskerville, sans-serif;
   font-weight: 500;
-  font-size: 11px;
+  font-size: 18px;
   display: inline;
+  position: relative;
+  bottom: 10px;
 }
 
 .name-div {
@@ -123,7 +139,18 @@
   top: 0;
   right: 0;
   bottom: 0;
-  left: 3rem;
+  left: 0;
+}
+
+.fave-name-div {
+  text-align: center;
+  position: relative;
+  right: 8px;
+}
+
+.fave-photo-div {
+  margin: auto;
+  text-align: center;
 }
 
 .display-none {
@@ -199,9 +226,9 @@
 
 .fa-trash-o {
   position: relative;
-  left: 7.5rem;
-  font-size: 24px;
-  bottom: 16.5rem;
+  right: 2.7rem;
+  font-size: 22px;
+  bottom: 12.2rem;
   color: white;
 }
 
@@ -215,4 +242,5 @@
   top: 50%;
   transform: translate(-50%, -50%);
   padding-right: 5rem;
+}
 }
