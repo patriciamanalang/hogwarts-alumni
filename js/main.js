@@ -81,15 +81,15 @@ function renderCharacters(student) {
 }
 
 function handleSearch(event) {
-  var $characterNodes = $characters.querySelectorAll('.column-half');
+  var $characterNodes = $characters.querySelectorAll('.column-full');
   for (var i = 0; i < $characterNodes.length; i++) {
     if (!$characterNodes[i].textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
-      $characterNodes[i].className = 'display-none column-half';
+      $characterNodes[i].className = 'display-none column-full';
     }
   }
   if (event.target.value === '') {
     for (var j = 0; j < $characterNodes.length; j++) {
-      $characterNodes[j].className = 'column-half';
+      $characterNodes[j].className = 'column-full';
     }
   }
 }
