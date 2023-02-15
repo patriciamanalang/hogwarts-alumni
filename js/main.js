@@ -52,12 +52,12 @@ getHarryPotterData();
 function renderCharacters(student) {
   var $outerDiv = document.createElement('div');
   $outerDiv.setAttribute('class', 'characters');
-  var $columnHalfDiv = document.createElement('div');
-  $columnHalfDiv.setAttribute('class', 'column-half');
-  $outerDiv.appendChild($columnHalfDiv);
+  var $columnFullDiv = document.createElement('div');
+  $columnFullDiv.setAttribute('class', 'column-full');
+  $outerDiv.appendChild($columnFullDiv);
   var $photoDiv = document.createElement('div');
   $photoDiv.setAttribute('class', 'photo-div');
-  $columnHalfDiv.appendChild($photoDiv);
+  $columnFullDiv.appendChild($photoDiv);
   var $img = document.createElement('img');
   $img.setAttribute('class', 'photo');
   $img.setAttribute('id', student.name);
@@ -67,9 +67,12 @@ function renderCharacters(student) {
     $img.src = student.image;
   }
   $photoDiv.appendChild($img);
+  var $secondColumnFullDiv = document.createElement('div');
+  $secondColumnFullDiv.setAttribute('class', 'column-full');
+  $outerDiv.appendChild($columnFullDiv);
   var $nameDiv = document.createElement('div');
   $nameDiv.setAttribute('class', 'name-div');
-  $photoDiv.appendChild($nameDiv);
+  $columnFullDiv.appendChild($nameDiv);
   var $h3 = document.createElement('h3');
   $h3.setAttribute('class', 'character-name');
   $h3.textContent = student.name;
@@ -203,14 +206,14 @@ function renderFavoritesList(student) {
   var $favoritesDiv = document.createElement('div');
   $favoritesDiv.setAttribute('class', 'favorites-list');
   // $favoritesDiv.setAttribute('id', student.name);
-  var $columnHalfDiv = document.createElement('div');
-  $columnHalfDiv.setAttribute('class', 'column-half');
-  $favoritesDiv.appendChild($columnHalfDiv);
+  var $columnFullDiv = document.createElement('div');
+  $columnFullDiv.setAttribute('class', 'column-full');
+  $favoritesDiv.appendChild($columnFullDiv);
   var $favePhotoDiv = document.createElement('div');
-  $favePhotoDiv.setAttribute('class', 'photo-div');
-  $columnHalfDiv.appendChild($favePhotoDiv);
+  $favePhotoDiv.setAttribute('class', 'fave-photo-div');
+  $columnFullDiv.appendChild($favePhotoDiv);
   var $faveImg = document.createElement('img');
-  $faveImg.setAttribute('class', 'photo');
+  $faveImg.setAttribute('class', 'fave-photo');
   // $faveImg.src = student.image;
   if (!student.image) {
     $faveImg.src = 'https://i.pinimg.com/originals/9d/16/cd/9d16cd553fe770f51639bb82ac14e70a.png';
@@ -218,9 +221,12 @@ function renderFavoritesList(student) {
     $faveImg.src = student.image;
   }
   $favePhotoDiv.appendChild($faveImg);
+  var $secondColumnFullDiv = document.createElement('div');
+  $secondColumnFullDiv.setAttribute('class', 'column-full');
+  $favoritesDiv.appendChild($columnFullDiv);
   var $faveNameDiv = document.createElement('div');
-  $faveNameDiv.setAttribute('class', 'name-div');
-  $favePhotoDiv.appendChild($faveNameDiv);
+  $faveNameDiv.setAttribute('class', 'fave-name-div');
+  $columnFullDiv.appendChild($faveNameDiv);
   var $faveName = document.createElement('p');
   $faveName.setAttribute('class', 'character-name');
   $faveName.textContent = student.name;
@@ -340,7 +346,7 @@ function handleCancelButton(event) {
 }
 
 function handleDeleteButton(event) {
-  var favListDiv = $favoritesList.querySelectorAll('.column-half');
+  var favListDiv = $favoritesList.querySelectorAll('.column-full');
   if (data.delete !== null) {
     for (var i = 0; i < data.favorites.length; i++) {
       if (data.delete.name === data.favorites[i].name) {
