@@ -20,8 +20,6 @@ function getHarryPotterData() {
   xhr.open('GET', 'https://hp-api.onrender.com/api/characters');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    // console.log(xhr.status);
-    // console.log(xhr.response);
     for (var i = 0; i < xhr.response.length; i++) {
       $characters.appendChild(renderCharacters(xhr.response[i]));
     }
@@ -29,25 +27,6 @@ function getHarryPotterData() {
   xhr.send();
 }
 getHarryPotterData();
-
-/*  <div class="characters">
-      <div class="column-half">
-        <div class="photo-div">
-          <img class="photo" src="images/harry.jpg">
-          <div class="name-div">
-            <h3 class="character-name">Harry Potter</h3>
-          </div>
-        </div>
-      </div>
-      <div class="column-half">
-        <div class="photo-div">
-          <img class="photo" src="images/hermione.jpg">
-          <div class="name-div">
-            <h3 class="character-name">Hermione Granger</h3>
-          </div>
-        </div>
-      </div>
-    </div> */
 
 function renderCharacters(student) {
   var $outerDiv = document.createElement('div');
@@ -97,7 +76,6 @@ function handleSearch(event) {
 function handleImageClick(event) {
   data.view = 'character-info';
   var clickedImage = event.target.getAttribute('id');
-  // console.log(clickedImage);
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://hp-api.onrender.com/api/characters');
   xhr.responseType = 'json';
@@ -118,23 +96,6 @@ function handleImageClick(event) {
   xhr.send();
 }
 
-// <div class="row wrap alumni-info">
-//   <div class="column-half center-img">
-//     <img class="info-photo" src="images/harry.jpg">
-//     <i class="fa-regular fa-heart" id="harry potter"></i>
-//     <p class="character-info-name">Harry Potter</p>
-//   </div>
-//   <div class="column-half character-details">
-//     <div class="character-detail-styling">House: Gryffindor</div>
-//     <div class="character-detail-styling">Date of Birth: 07-31-1980</div>
-//     <div class="character-detail-styling">Wizard: True</div>
-//     <div class="character-detail-styling">Ancestry: Half-blood</div>
-//     <div class="character-detail-styling">Patronus: Stag</div>
-//     <div class="character-detail-styling">Eye Color: Green</div>
-//     <div class="character-detail-styling">Hair Color: Black</div>
-//   </div>
-// </div >
-
 function renderCharacterInfo(student) {
   var $alumniInfoDiv = document.createElement('div');
   $alumniInfoDiv.setAttribute('class', 'row wrap alumni-info');
@@ -143,7 +104,6 @@ function renderCharacterInfo(student) {
   $alumniInfoDiv.appendChild($columnHalfDiv);
   var $img = document.createElement('img');
   $img.setAttribute('class', 'info-photo');
-  // $img.src = student.image;
   if (!student.image) {
     $img.src = 'https://i.pinimg.com/originals/9d/16/cd/9d16cd553fe770f51639bb82ac14e70a.png';
   } else {
@@ -191,21 +151,10 @@ function renderCharacterInfo(student) {
   $characterDetails.appendChild($hairColor);
   return $alumniInfoDiv;
 }
-/*  <div class="favorites-list">
-      <div class="column-half">
-        <div class="photo-div">
-          <img class="photo" src="images/harry.jpg">
-          <div class="name-div">
-            <p class="character-name">Harry Potter</p>
-          </div>
-          <i class="fa fa-trash-o" id=" Harry Potter"></i>
-        </div>
-      </div>
-    </div> */
+
 function renderFavoritesList(student) {
   var $favoritesDiv = document.createElement('div');
   $favoritesDiv.setAttribute('class', 'favorites-list');
-  // $favoritesDiv.setAttribute('id', student.name);
   var $columnFullDiv = document.createElement('div');
   $columnFullDiv.setAttribute('class', 'column-full');
   $favoritesDiv.appendChild($columnFullDiv);
@@ -214,7 +163,6 @@ function renderFavoritesList(student) {
   $columnFullDiv.appendChild($favePhotoDiv);
   var $faveImg = document.createElement('img');
   $faveImg.setAttribute('class', 'fave-photo');
-  // $faveImg.src = student.image;
   if (!student.image) {
     $faveImg.src = 'https://i.pinimg.com/originals/9d/16/cd/9d16cd553fe770f51639bb82ac14e70a.png';
   } else {
@@ -235,7 +183,6 @@ function renderFavoritesList(student) {
   $trashIcon.setAttribute('class', 'fa fa-trash-o');
   $trashIcon.setAttribute('id', student.name);
   $favePhotoDiv.appendChild($trashIcon);
-
   return $favoritesDiv;
 }
 
@@ -308,10 +255,6 @@ function handleLogoClick(event) {
   $homeView.className = 'home-view container';
   $characterInfoView.className = 'hidden character-info container';
   $favoritesView.className = 'hidden favorites container';
-  // var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
-  // for (var i = 0; i < favoritesNodes.length; i++) {
-  //   $alumniInfo.removeChild(favoritesNodes[i]);
-  // }
 }
 
 function handleDOMContentLoaded() {

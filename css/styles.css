@@ -33,6 +33,18 @@
   }
 }
 
+.lds-ring {
+  position: fixed;
+  z-index: 1000;
+  background-color: rgb(0 0 0 / 80%);
+  text-align: center;
+  justify-content: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding-right: 5rem;
+}
+
 .nav-logo {
   height: 10vh;
   flex-basis: 20%;
@@ -77,6 +89,7 @@
   justify-content: center;
   text-align: center;
   align-items: center;
+  padding-left: 1rem;
 }
 
 .search {
@@ -111,9 +124,7 @@
   object-fit: fill;
   height: 16rem;
   width: 12rem;
-  padding: 15px;
-
-  /* margin: 12px; */
+  padding: 10px;
 }
 
 .fave-photo {
@@ -230,17 +241,4 @@
   font-size: 22px;
   bottom: 12.2rem;
   color: white;
-}
-
-.lds-ring {
-  position: fixed;
-  z-index: 1000;
-  background-color: rgb(0 0 0 / 80%);
-  text-align: center;
-  justify-content: center;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding-right: 5rem;
-}
 }
