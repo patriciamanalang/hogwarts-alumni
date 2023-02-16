@@ -30,10 +30,13 @@ Try the application live here: https://patriciamanalang.github.io/hogwarts-alumn
 ## Preview
 
 #### Users can search for a character
-![Kapture 2023-02-13 at 16 40 16](https://user-images.githubusercontent.com/109925604/218611689-9f13c69e-2891-4aa2-bee9-e2de05a08f21.gif)
+![Kapture 2023-02-15 at 15 57 32](https://user-images.githubusercontent.com/109925604/219222705-e76e0091-3cfa-4153-ba1b-7de3bf582811.gif)
+
+
 
 #### Users can "favorite" a character + view their favorite characters list
-![Kapture 2023-02-13 at 16 51 12](https://user-images.githubusercontent.com/109925604/218612155-c8e5f38a-10bc-46f4-90c6-b2c0f20124ab.gif)
+![Kapture 2023-02-15 at 16 11 36](https://user-images.githubusercontent.com/109925604/219224735-1806fba6-44c6-424f-8c6a-56edec891147.gif)
+
 
 
 ### Getting Started
