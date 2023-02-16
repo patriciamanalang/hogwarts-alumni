@@ -77,6 +77,7 @@
   justify-content: center;
   text-align: center;
   align-items: center;
+  padding-left: 1rem;
 }
 
 .search {
@@ -111,9 +112,7 @@
   object-fit: fill;
   height: 16rem;
   width: 12rem;
-  padding: 15px;
-
-  /* margin: 12px; */
+  padding: 10px;
 }
 
 .fave-photo {
@@ -242,5 +241,4 @@
   top: 50%;
   transform: translate(-50%, -50%);
   padding-right: 5rem;
-}
 }
