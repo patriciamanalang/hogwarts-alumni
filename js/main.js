@@ -20,8 +20,6 @@ function getHarryPotterData() {
   xhr.open('GET', 'https://hp-api.onrender.com/api/characters');
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    // console.log(xhr.status);
-    // console.log(xhr.response);
     for (var i = 0; i < xhr.response.length; i++) {
       $characters.appendChild(renderCharacters(xhr.response[i]));
     }
@@ -97,7 +95,6 @@ function handleSearch(event) {
 function handleImageClick(event) {
   data.view = 'character-info';
   var clickedImage = event.target.getAttribute('id');
-  // console.log(clickedImage);
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://hp-api.onrender.com/api/characters');
   xhr.responseType = 'json';
@@ -143,7 +140,6 @@ function renderCharacterInfo(student) {
   $alumniInfoDiv.appendChild($columnHalfDiv);
   var $img = document.createElement('img');
   $img.setAttribute('class', 'info-photo');
-  // $img.src = student.image;
   if (!student.image) {
     $img.src = 'https://i.pinimg.com/originals/9d/16/cd/9d16cd553fe770f51639bb82ac14e70a.png';
   } else {
@@ -205,7 +201,6 @@ function renderCharacterInfo(student) {
 function renderFavoritesList(student) {
   var $favoritesDiv = document.createElement('div');
   $favoritesDiv.setAttribute('class', 'favorites-list');
-  // $favoritesDiv.setAttribute('id', student.name);
   var $columnFullDiv = document.createElement('div');
   $columnFullDiv.setAttribute('class', 'column-full');
   $favoritesDiv.appendChild($columnFullDiv);
@@ -214,7 +209,6 @@ function renderFavoritesList(student) {
   $columnFullDiv.appendChild($favePhotoDiv);
   var $faveImg = document.createElement('img');
   $faveImg.setAttribute('class', 'fave-photo');
-  // $faveImg.src = student.image;
   if (!student.image) {
     $faveImg.src = 'https://i.pinimg.com/originals/9d/16/cd/9d16cd553fe770f51639bb82ac14e70a.png';
   } else {
@@ -235,7 +229,6 @@ function renderFavoritesList(student) {
   $trashIcon.setAttribute('class', 'fa fa-trash-o');
   $trashIcon.setAttribute('id', student.name);
   $favePhotoDiv.appendChild($trashIcon);
-
   return $favoritesDiv;
 }
 
@@ -308,10 +301,6 @@ function handleLogoClick(event) {
   $homeView.className = 'home-view container';
   $characterInfoView.className = 'hidden character-info container';
   $favoritesView.className = 'hidden favorites container';
-  // var favoritesNodes = $alumniInfo.querySelectorAll('.alumni-info');
-  // for (var i = 0; i < favoritesNodes.length; i++) {
-  //   $alumniInfo.removeChild(favoritesNodes[i]);
-  // }
 }
 
 function handleDOMContentLoaded() {
