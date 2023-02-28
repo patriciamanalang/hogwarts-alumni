@@ -1,4 +1,4 @@
-# Hogwarts Alumni
+# Hogwarts Alumni ⚡️
 
 A dynamic HTML, CSS, and JavaScript web application for Harry Potter fans who want to search for a
 character, view information about a character, "favorite" a character & view a list of their favorite characters.
